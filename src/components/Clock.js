@@ -17,7 +17,8 @@ export default class Clock extends Component {
         super(props);
         this.state = {
             time: moment().format("LTS"),
-            date: moment().format("LL")
+            day: moment().format('dddd'),
+            date: moment().format("ll"),
         }
     }
 
@@ -25,7 +26,8 @@ export default class Clock extends Component {
         setTimeout(() => {
             this.setState({
                 time: moment().format("LTS"),
-                date: moment().format("LL")
+                day: moment().format('dddd'),
+                date: moment().format("ll")
             });
         }, 1000);
     }
@@ -46,7 +48,7 @@ export default class Clock extends Component {
 					{this.state.time}
 				</Text>
 				<Text style={styles.dateText}>
-					{this.state.date}
+                    {this.state.day}, {this.state.date}
 				</Text>
 
 				<KeepAwake />
