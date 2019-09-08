@@ -24,6 +24,9 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import moment from 'moment';
+import awake from 'react-native-keep-awake';
+
 const App = () => {
   return (
     <Fragment>
