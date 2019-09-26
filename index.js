@@ -3,7 +3,7 @@
  */
 
 import {AppRegistry} from 'react-native';
-import App from './src/components/Clock';
+import App from './src/components/Tasks';
 import {name as appName} from './app.json';
 
 AppRegistry.registerComponent(appName, () => App);

@@ -12,6 +12,13 @@ import {
 
 import KeepAwake from 'react-native-keep-awake';
 import moment from 'moment';
+import BackgroundTask from 'react-native-background-task'
+
+BackgroundTask.define(() => {
+    alert('Hello from a background task')
+    console.log('Hello from a background task')
+    BackgroundTask.finish()
+})
 
 export default class Clock extends Component {
     constructor(props) {
@@ -37,14 +44,17 @@ export default class Clock extends Component {
         }, 1000);
     }
 
-    setTimeAlarm(){
+    setTimeAlarm() {
         this.setState({
-            timeAlarm: moment(this.state.timeSet, 'hh:mm a').format('LT') 
+            timeAlarm: moment(this.state.timeSet, 'hh:mm a').format('LT')
         });
     }
 
     componentDidMount() {
         this.setTime();
+        BackgroundTask.schedule({
+            period: 10,
+        })
     }
 
     render() {
@@ -73,8 +83,8 @@ export default class Clock extends Component {
                 />
 
                 <Button
-                    title = "SAVE"
-                    onPress = {()=>this.setTimeAlarm()}
+                    title="SAVE"
+                    onPress={() => this.setTimeAlarm()}
                 />
 
                 <KeepAwake />
